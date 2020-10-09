@@ -21,7 +21,6 @@ font-size:1.6rem;
 }
 transition:${pr => pr.theme.QuickTransition};
 
-
 `
 
 export default function Character(props) {
@@ -34,9 +33,10 @@ export default function Character(props) {
         const status = char.status
         const image = char.image
 
+    
 
         return (
-            <StyledCharacter key={char.id}>
+            <StyledCharacter key={char.id} >
                 <ul>
                     <img src={image}></img>
                     <p>Name: {name}</p>
