@@ -1,7 +1,37 @@
-import React from 'react';
+import axios from 'axios';
+import styled from 'styled-components'
+import React, { useState, useEffect } from 'react';
+import Characters from "./components/Character.js"
 import './App.css';
 
+const StyledApp = styled.div`
+width:60%;
+flex-wrap:wrap;
+display:flex;
+justify-content:space-around; 
+margin:auto;
+h1{
+  font-size:10rem;
+  display:block;
+  width:100%;
+  text-align:center;
+}
+`
 const App = () => {
+  const [characterList, setCharacterList] = useState([])
+
+  useEffect(() => {
+    const fetchCharacter = () => {
+      axios.get('https://rickandmortyapi.com/api/character')
+        .then((res) => {
+          setCharacterList(res.data.results)
+        })
+        .catch((error) => {
+          debugger
+        })
+    }
+    fetchCharacter()
+  }, [])
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -10,9 +40,10 @@ const App = () => {
   // sync up with, if any.
 
   return (
-    <div className="App">
+    <StyledApp>
       <h1 className="Header">Characters</h1>
-    </div>
+      <Characters characterList={characterList} />
+    </StyledApp>
   );
 }
 
