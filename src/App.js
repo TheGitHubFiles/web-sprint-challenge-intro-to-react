@@ -11,9 +11,8 @@ display:flex;
 justify-content:space-around; 
 margin:auto;
 h1{
-  font-size:10rem;
-  display:block;
   width:100%;
+  font-size:5rem;
   text-align:center;
 }
 `
